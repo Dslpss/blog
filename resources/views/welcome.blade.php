@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="hero-section position-relative mb-5 d-flex align-items-center">
-    <div class="container position-relative">
+    <div class="container">
         <div class="row">
             <div class="col-md-8 text-white">
                 <div class="fade-in-up" style="--delay: 0s">
@@ -48,28 +48,28 @@
     <div class="container">
         <div class="row g-4 text-center">
             <div class="col-md-3">
-                <div class="stat-item">
+                <div class="stat-item scroll-reveal">
                     <i class="fas fa-file-code fa-2x mb-3"></i>
                     <h3 class="counter">{{ $postsCount }}</h3>
                     <p>Posts Publicados</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="stat-item">
+                <div class="stat-item scroll-reveal">
                     <i class="fas fa-folder fa-2x mb-3"></i>
                     <h3 class="counter">{{ $categoriesCount }}</h3>
                     <p>Categorias</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="stat-item">
+                <div class="stat-item scroll-reveal">
                     <i class="fas fa-code-branch fa-2x mb-3"></i>
                     <h3 class="counter">10+</h3>
                     <p>Tecnologias</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="stat-item">
+                <div class="stat-item scroll-reveal">
                     <i class="fas fa-users fa-2x mb-3"></i>
                     <h3 class="counter">1000+</h3>
                     <p>Desenvolvedores</p>
@@ -81,12 +81,12 @@
 
 <div class="container">
     <!-- Featured Posts -->
-    <section class="mb-5 fade-in-up">
-        <h2 class="section-title">Posts em Destaque</h2>
+    <section class="mb-5">
+        <h2 class="section-title scroll-reveal">Posts em Destaque</h2>
         <div class="row g-4">
             @foreach($featuredPosts ?? [] as $post)
             <div class="col-md-4">
-                <div class="card post-card h-100">
+                <div class="card post-card h-100 scroll-reveal">
                     <img src="{{ $post->poster_url }}" class="card-img-top post-img" alt="{{ $post->title }}">
                     <div class="card-body">
                         <div class="post-category">{{ $post->category->name }}</div>
@@ -156,11 +156,11 @@
                     <div class="card-body p-5">
                         <div class="terminal-text mb-2">init dev_journey.sh</div>
                         <h2 class="text-white mb-4 display-5 fw-bold">Pronto para Começar?</h2>
-                        <p class="text-white-50 mb-4 lead">Join our developer community and start your coding journey today!</p>
+                        <p class="text-white-50 mb-4 lead">Junte-se à nossa comunidade de desenvolvedores e comece sua jornada de programação hoje!</p>
                         <div class="d-flex gap-3 justify-content-center">
                             <a href="{{ route('contact') }}" class="btn btn-lg px-5 py-3">
                                 <i class="fas fa-code me-2"></i>
-                                start_coding()
+                                começar_a_programar()
                             </a>
                         </div>
                     </div>

@@ -1,0 +1,254 @@
+// Admin Variables
+$admin-sidebar-width: 250px;
+$admin-header-height: 60px;
+
+// Admin Layout
+.admin-wrapper {
+    background: lighten($dark, 5%);
+    min-height: 100vh;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+// Sidebar
+#sidebar {
+    width: $admin-sidebar-width;
+    min-height: 100vh;
+    background: $dark;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+
+    .sidebar-header {
+        padding: 1rem;
+        border-bottom: 1px solid rgba($primary, 0.1);
+        margin-bottom: 1rem;
+
+        h3 {
+            color: $primary;
+            font-family: "Fira Code", monospace;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+    }
+
+    .nav-link {
+        color: rgba(255, 255, 255, 0.7);
+        padding: 0.8rem 1.2rem;
+        border-radius: 8px;
+        margin: 0.2rem 1rem;
+        font-family: "Fira Code", monospace;
+        transition: all 0.3s ease;
+
+        i {
+            width: 20px;
+            text-align: center;
+            margin-right: 0.5rem;
+            color: $primary;
+        }
+
+        &:hover,
+        &.active {
+            background: rgba($primary, 0.1);
+            color: $primary;
+            transform: translateX(5px);
+        }
+    }
+}
+
+// Main Content
+#content {
+    margin-left: $admin-sidebar-width;
+    min-height: 100vh;
+    background: lighten($dark, 3%);
+    padding: 1rem;
+
+    .navbar {
+        background: $dark;
+        margin-bottom: 2rem;
+        border-radius: 10px;
+        padding: 1rem;
+        border: 1px solid rgba($primary, 0.1);
+
+        .btn-dark {
+            background: transparent;
+            border: 1px solid rgba($primary, 0.2);
+
+            &:hover {
+                background: rgba($primary, 0.1);
+            }
+        }
+    }
+
+    // Cards
+    .card {
+        background: $dark;
+        border: 1px solid rgba($primary, 0.1);
+        border-radius: 10px;
+
+        .card-header {
+            background: transparent;
+            border-bottom: 1px solid rgba($primary, 0.1);
+            padding: 1rem 1.5rem;
+
+            h5 {
+                color: $primary;
+                font-family: "Fira Code", monospace;
+                margin: 0;
+            }
+        }
+
+        .card-title {
+            color: $primary;
+            font-family: "Fira Code", monospace;
+        }
+
+        .card-body {
+            color: rgba(255, 255, 255, 0.9);
+        }
+    }
+
+    // Forms
+    .form-label {
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+    }
+
+    .form-control {
+        background: lighten($dark, 5%);
+        border: 1px solid rgba($primary, 0.2);
+        color: white;
+
+        &:focus {
+            background: lighten($dark, 7%);
+            border-color: $primary;
+            box-shadow: 0 0 0 0.25rem rgba($primary, 0.25);
+            color: white;
+        }
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    // Tables
+    .table {
+        color: rgba(255, 255, 255, 0.9);
+
+        thead th {
+            background: rgba($primary, 0.1);
+            color: $primary;
+            font-family: "Fira Code", monospace;
+            font-weight: 600;
+            border-bottom: 2px solid rgba($primary, 0.1);
+            padding: 1rem;
+        }
+
+        tbody {
+            tr {
+                border-bottom: 1px solid rgba($primary, 0.1);
+
+                &:hover {
+                    background: rgba($primary, 0.05);
+                }
+            }
+
+            td {
+                padding: 1rem;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    // Dashboard Stats
+    .stats-card {
+        background: linear-gradient(145deg, $dark, lighten($dark, 5%));
+        border: 1px solid rgba($primary, 0.1);
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba($primary, 0.1);
+        }
+
+        .numbers {
+            p {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.9rem;
+                font-family: "Fira Code", monospace;
+                margin-bottom: 0.5rem;
+            }
+
+            h5 {
+                color: $primary;
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin: 0;
+            }
+        }
+    }
+
+    // Buttons
+    .btn-primary {
+        background: $primary;
+        border-color: $primary;
+
+        &:hover {
+            background: darken($primary, 5%);
+            border-color: darken($primary, 5%);
+            transform: translateY(-2px);
+        }
+    }
+
+    .btn-outline-primary {
+        color: $primary;
+        border-color: $primary;
+
+        &:hover {
+            background: $primary;
+            color: $dark;
+        }
+    }
+
+    // Alerts
+    .alert {
+        background: rgba($primary, 0.1);
+        border: 1px solid rgba($primary, 0.2);
+        color: $primary;
+    }
+
+    // Pagination
+    .pagination {
+        .page-link {
+            background: $dark;
+            border-color: rgba($primary, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+
+            &:hover {
+                background: lighten($dark, 5%);
+                color: $primary;
+            }
+
+            &.active {
+                background: $primary;
+                color: $dark;
+            }
+        }
+    }
+}
+
+// Responsivo
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -$admin-sidebar-width;
+
+        &.active {
+            margin-left: 0;
+        }
+    }
+
+    #content {
+        margin-left: 0;
+    }
+}
