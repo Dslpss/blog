@@ -9,11 +9,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
-        $posts = Post::when(request('category_id'), function ($query) {
-            $query->where('category_id', request('category_id'));
-        })->latest()->get();
-
-        return view('home', compact('categories', 'posts'));
+        return view('welcome', [
+            'featuredPosts' => Post::with('category')->latest()->take(3)->get(),
+            'posts' => Post::with('category')->latest()->skip(3)->take(6)->get(),
+            'categories' => Category::withCount('posts')->get()
+        ]);
     }
 }

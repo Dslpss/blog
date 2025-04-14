@@ -43,8 +43,6 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
-            'throw' => false,
-            'report' => false,
         ],
 
         's3' => [
@@ -58,6 +56,13 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
             'report' => false,
+        ],
+
+        'posters' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/posters'),
+            'url' => env('APP_URL').'/storage/posters',
+            'visibility' => 'public',
         ],
 
     ],
