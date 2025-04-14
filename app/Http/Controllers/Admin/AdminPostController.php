@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class AdminPostController extends Controller
 {
@@ -52,8 +53,8 @@ class AdminPostController extends Controller
 
         if ($request->hasFile('poster')) {
             $file = $request->file('poster');
-            $filename = time() . '_' . Str::slug($file->getClientOriginalName());
-            $file->storeAs('public/posters', $filename);
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('posters', $filename, 'public');
             $validated['poster'] = $filename;
         }
 
@@ -84,12 +85,15 @@ class AdminPostController extends Controller
         $validated['slug'] = $this->createUniqueSlug($validated['title'], $post->id);
 
         if ($request->hasFile('poster')) {
-            $post->deletePoster();
+            // Remove o poster antigo
+            if ($post->poster) {
+                Storage::disk('public')->delete('posters/' . $post->poster);
+            }
             
-            $poster = $request->file('poster');
-            $posterName = time() . '.' . $poster->extension();
-            $poster->storeAs('', $posterName, 'posters');
-            $validated['poster'] = $posterName;
+            $file = $request->file('poster');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('posters', $filename, 'public');
+            $validated['poster'] = $filename;
         }
 
         $post->update($validated);

@@ -38,10 +38,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Poster</label>
-                    <input type="file" name="poster" class="form-control @error('poster') is-invalid @enderror">
+                    <label class="form-label">Imagem de Capa</label>
+                    <input type="file" name="poster" class="form-control @error('poster') is-invalid @enderror" accept="image/*">
                     @if(isset($post) && $post->poster)
-                        <img src="{{ $post->poster_url }}" class="mt-2" style="max-height: 200px">
+                        <div class="mt-2">
+                            <img src="{{ $post->poster_url }}" alt="Poster atual" class="img-thumbnail" style="max-height: 200px">
+                        </div>
                     @endif
                     @error('poster')
                         <div class="invalid-feedback">{{ $message }}</div>

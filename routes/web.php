@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\ContactController;
 
 // Rota principal
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -21,6 +22,13 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::view('/second', 'second');
+
+// Rotas de Contato
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
 // Rotas do Painel Administrativo
 Route::prefix('admin')->name('admin.')->group(function () {

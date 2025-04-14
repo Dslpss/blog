@@ -12,7 +12,9 @@ class HomeController extends Controller
         return view('welcome', [
             'featuredPosts' => Post::with('category')->latest()->take(3)->get(),
             'posts' => Post::with('category')->latest()->skip(3)->take(6)->get(),
-            'categories' => Category::withCount('posts')->get()
+            'categories' => Category::withCount('posts')->get(),
+            'postsCount' => Post::count(),
+            'categoriesCount' => Category::count(),
         ]);
     }
 }
